@@ -12,8 +12,12 @@ function updateLanguage(lang) {
     document.getElementById('lang-text').textContent = lang === 'pt' ? 'EN' : 'PT';
 
     const resumeLink = document.getElementById('resume-link');
-    if (resumeLink) {
-        resumeLink.href = lang === 'pt' ? './curriculo_tech_pt.pdf' : './curriculo_tech_en.pdf';
+
+    // Aponta corretamente para o curriculo_pt.pdf e curriculo_en.pdf na raiz
+    if (lang === 'pt') {
+        if (resumeLink) resumeLink.href = 'curriculo_pt.pdf';
+    } else {
+        if (resumeLink) resumeLink.href = 'curriculo_en.pdf';
     }
 
     document.querySelectorAll('[data-pt]').forEach(el => {
