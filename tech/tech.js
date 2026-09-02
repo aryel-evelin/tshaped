@@ -33,21 +33,25 @@ function toggleLanguage() {
     updateLanguage(newLang);
 }
 
-// Funções de Compartilhamento Inteligente
-function shareLink() {
+// Função de Compartilhamento Específica da Página Tech
+function shareTech() {
+    const isPt = currentLang === 'pt';
+    
     const shareData = {
-        title: 'Aryel Evelin | Tech, Produto, Processos & IA',
-        text: 'Technical Product Manager. Especialista em mapeamento BPMN premiado, conformidade LGPD, atuação T-Shaped, integração de IA e automação.',
-        url: 'https://aryel-evelin.github.io/portfolio/tech/'
+        title: 'Aryel Evelin | Tech & Product Portfolio',
+        text: isPt 
+            ? 'Confira o portfólio Tech, Produto, Processos (BPMN) e IA de Aryel Evelin.' 
+            : 'Explore Aryel Evelin\'s Tech, Product Management, BPMN, and AI portfolio.',
+        url: window.location.href
     };
 
     if (navigator.share) {
         navigator.share(shareData).catch(() => {});
     } else {
         navigator.clipboard.writeText(shareData.url);
-        const alertMsg = document.documentElement.lang === 'pt-BR' 
-            ? 'Link copiado para a área de transferência!' 
-            : 'Link copied to clipboard!';
+        const alertMsg = isPt 
+            ? 'Link do portfólio Tech copiado para a área de transferência!' 
+            : 'Tech portfolio link copied to clipboard!';
         alert(alertMsg);
     }
 }
