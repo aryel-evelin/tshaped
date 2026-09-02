@@ -8,11 +8,11 @@
     <!-- FAVICON -->
     <link rel="icon" type="image/png" href="../favicon.png">
 
-    <!-- OPEN GRAPH (PRÉVIA PARA REDES SOCIAIS) -->
+    <!-- OPEN GRAPH -->
     <meta property="og:title" content="Aryel Evelin | Tech, Produto, Processos & IA">
     <meta property="og:description" content="Technical Product Manager especialista em mapeamento BPMN, conformidade LGPD, automação de processos e integração de Inteligência Artificial.">
     <meta property="og:image" content="../foto1.jpg">
-    <meta property="og:url" content="https://aryel-evelin.github.io/portfolio/tech/">
+    <meta property="og:url" content="https://aryel-evelin.github.io/tshaped/tech/">
     <meta property="og:type" content="website">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -38,31 +38,30 @@
                 <a href="#destaques" data-pt="Destaques" data-en="Highlights" class="text-[#a8a29e] hover:text-[#ff1a1a] transition">Destaques</a>
                 <a href="#" id="resume-link" target="_blank" data-pt="Currículo" data-en="Resume" class="text-[#a8a29e] hover:text-[#ff1a1a] transition">Currículo</a>
                 <a href="https://www.linkedin.com/in/aryel-evelin-a7507129/" target="_blank" class="text-[#a8a29e] hover:text-[#ff1a1a] transition">LinkedIn</a>
-                <!-- Novo Link WhatsApp -->
-                <a href="https://wa.me/5564993055216" target="_blank" data-pt="WhatsApp" data-en="WhatsApp" class="text-[#a8a29e] hover:text-[#25d366] transition flex items-center gap-1">
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                <a href="https://wa.me/5564993055216" target="_blank" data-pt="WhatsApp" data-en="WhatsApp" class="text-[#a8a29e] hover:text-[#25d366] transition">
                     WhatsApp
                 </a>
             </div>
 
-            <!-- BOTÃO DE ALTERNÂNCIA DE IDIOMA -->
-            <button onclick="toggleLanguage()" id="lang-btn" class="sm:absolute sm:right-6 px-3 py-1 bg-[#1c1917] hover:bg-[#292524] border border-[#292524] text-xs font-bold text-[#ff3333] rounded-md transition flex items-center gap-1 cursor-pointer">
-                🌐 <span id="lang-text">EN</span>
-            </button>
+            <!-- BOTÕES SUPERIORES (COMPARTILHAR & IDIOMA) -->
+            <div class="sm:absolute sm:right-6 flex items-center gap-2">
+                <button onclick="shareTech()" id="share-btn" title="Compartilhar Portfólio Tech" class="px-2.5 py-1 bg-[#1c1917] hover:bg-[#292524] border border-[#292524] text-xs font-bold text-[#e7e5e4] hover:text-[#ff3333] rounded-md transition flex items-center justify-center cursor-pointer">
+                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+                </button>
+                <button onclick="toggleLanguage()" id="lang-btn" class="px-3 py-1 bg-[#1c1917] hover:bg-[#292524] border border-[#292524] text-xs font-bold text-[#ff3333] rounded-md transition flex items-center gap-1 cursor-pointer">
+                    🌐 <span id="lang-text">EN</span>
+                </button>
+            </div>
         </div>
     </nav>
 
-    <!-- SEÇÃO 1: INÍCIO FULL-WIDTH (SLIDE FIXO COM FLUXO BPMN) -->
+    <!-- SEÇÃO 1: INÍCIO FULL-WIDTH -->
     <section id="inicio" class="relative w-full min-h-[90vh] flex flex-col justify-center items-center text-center py-24 px-6 overflow-hidden border-b border-[#292524]">
-        
-        <!-- Fundo Fixo puxando o SVG gerado -->
         <div class="absolute inset-0 z-0">
             <div class="fixed-bpmn-bg" style="background-image: url('tech-bg.jpg'); background-size: cover; background-position: center;"></div>
-            <!-- Camada escura para garantir leitura do texto -->
             <div class="absolute inset-0 bg-[#0f0e0d]/75 backdrop-blur-[2px]"></div>
         </div>
 
-        <!-- Conteúdo Centralizado sobre o Fluxo -->
         <div class="relative z-10 max-w-4xl mx-auto space-y-6">
             <span data-pt="Tech, Produto, Processos & IA" data-en="Tech, Product, Processes & AI" class="inline-block px-4 py-1.5 bg-[#e60000]/30 text-[#ff6666] text-xs font-bold rounded-full border border-[#ff1a1a]/50 shadow-lg backdrop-blur-sm">
                 Tech, Produto, Processos & IA
@@ -71,7 +70,7 @@
                 Aryel Evelin
             </h1>
             <p data-pt="Technical Product Manager com foco em unir visão estratégica de negócio e viabilidade técnica. Atuação premiada em engenharia de processos (BPMN), especialista em LGPD desde 2020, automação de esteiras fiscais e implementação de IA, servindo como o elo central entre desenvolvimento, QA e produto." data-en="Technical Product Manager focused on bridging strategic business vision and technical feasibility. Award-winning experience in process engineering (BPMN), LGPD compliance since 2020, fiscal workflow automation, and AI implementation, serving as the core link between development, QA, and product." class="text-[#f5f5f4] max-w-xl mx-auto text-sm leading-relaxed drop-shadow">
-                Technical Product Manager com 	 em unir visão estratégica de negócio e viabilidade técnica. Atuação premiada em engenharia de processos (BPMN), conformidade LGPD desde 2020, automação de esteiras fiscais e implementação de IA, servindo como o elo central entre desenvolvimento, QA e produto.
+                Technical Product Manager com foco em unir visão estratégica de negócio e viabilidade técnica. Atuação premiada em engenharia de processos (BPMN), conformidade LGPD desde 2020, automação de esteiras fiscais e implementação de IA, servindo como o elo central entre desenvolvimento, QA e produto.
             </p>
             <div class="pt-4 flex flex-wrap justify-center gap-4">
                 <a href="#destaques" data-pt="Explorar Cases & Processos" data-en="Explore Cases & Processes" class="px-6 py-3 bg-[#cc0000] hover:bg-[#b30000] text-white font-semibold rounded-lg transition shadow-lg shadow-[#cc0000]/30">
@@ -83,8 +82,6 @@
 
     <!-- CONTEÚDO PRINCIPAL -->
     <main class="max-w-4xl mx-auto px-6 space-y-24 py-16">
-
-        <!-- SEÇÃO 2: DESTAQUES TÉCNICOS & DE PROCESSO -->
         <section id="destaques" class="space-y-12 pt-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 
@@ -101,7 +98,7 @@
                     </div>
                 </div>
 
-                <!-- 2. Case Thomson Reuters: NFS-e & Documentação Completa -->
+                <!-- 2. Case Thomson Reuters -->
                 <div class="bg-[#1c1917]/50 border border-[#292524] p-6 rounded-2xl flex flex-col justify-between space-y-4">
                     <div class="space-y-3">
                         <span data-pt="Case Thomson Reuters" data-en="Thomson Reuters Case" class="text-[#ff3333] text-xs font-bold uppercase tracking-wider">Case Thomson Reuters</span>
@@ -110,7 +107,7 @@
                     </div>
                 </div>
 
-                <!-- 3. LGPD & Conformidade em Produtos Legados -->
+                <!-- 3. LGPD -->
                 <div class="bg-[#1c1917]/50 border border-[#292524] p-6 rounded-2xl flex flex-col justify-between space-y-4">
                     <div class="space-y-3">
                         <span data-pt="Compliance & Privacidade" data-en="Compliance & Privacy" class="text-[#ff3333] text-xs font-bold uppercase tracking-wider">Compliance & Privacidade</span>
@@ -119,7 +116,7 @@
                     </div>
                 </div>
 
-                <!-- 4. Product Delivery & Certificações Ágeis/QA -->
+                <!-- 4. Product Delivery -->
                 <div class="bg-[#1c1917]/50 border border-[#292524] p-6 rounded-2xl flex flex-col justify-between space-y-4">
                     <div class="space-y-3">
                         <span data-pt="Product Delivery & Qualidade" data-en="Product Delivery & Quality" class="text-[#ff3333] text-xs font-bold uppercase tracking-wider">Product Delivery & Qualidade</span>
@@ -128,7 +125,7 @@
                     </div>
                 </div>
 
-                <!-- 5. IA para Produto, Dev & AI Ops (Alignerr) -->
+                <!-- 5. AI Ops -->
                 <div class="bg-[#1c1917]/50 border border-[#292524] p-6 rounded-2xl flex flex-col justify-between space-y-4">
                     <div class="space-y-3">
                         <span data-pt="AI Ops & Engenharia" data-en="AI Ops & Engineering" class="text-[#ff3333] text-xs font-bold uppercase tracking-wider">AI Ops & Engenharia</span>
@@ -140,7 +137,7 @@
                     </div>
                 </div>
 
-                <!-- 6. Palestras & Enterprise Design Thinking -->
+                <!-- 6. Palestras -->
                 <div class="bg-[#1c1917]/50 border border-[#292524] p-6 rounded-2xl flex flex-col justify-between space-y-4">
                     <div class="space-y-3">
                         <span data-pt="Palestras & Facilitação" data-en="Speaking & Facilitation" class="text-[#ff3333] text-xs font-bold uppercase tracking-wider">Palestras & Facilitação</span>
@@ -157,35 +154,6 @@
 
             </div>
         </section>
-
-        <!-- SEÇÃO DE COMPARTILHAMENTO COM ÍCONES OFICIAIS -->
-        <section class="max-w-4xl mx-auto px-6 py-8 text-center border-t border-[#292524] my-12">
-            <p data-pt="Gostou do perfil de produto e tecnologia? Compartilhe com sua rede!" data-en="Liked the product and tech profile? Share it with your network!" class="text-xs uppercase tracking-wider text-[#a8a29e] mb-4 font-semibold">
-                Gostou do perfil de produto e tecnologia? Compartilhe com sua rede!
-            </p>
-            <div class="flex flex-wrap justify-center gap-3">
-                <!-- WhatsApp -->
-                <a href="https://api.whatsapp.com/send?text=Confira%20o%20portf%C3%B3lio%20Tech%20da%20Aryel%20Evelin:%20https://aryel-evelin.github.io/portfolio/tech/" target="_blank" class="px-4 py-2 bg-[#1c1917] hover:bg-[#292524] text-[#e7e5e4] border border-[#292524] rounded-lg text-xs font-semibold transition flex items-center gap-2">
-                    <svg class="w-4 h-4 fill-current text-[#25d366]" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                    WhatsApp
-                </a>
-                <!-- LinkedIn -->
-                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://aryel-evelin.github.io/portfolio/tech/" target="_blank" class="px-4 py-2 bg-[#1c1917] hover:bg-[#292524] text-[#e7e5e4] border border-[#292524] rounded-lg text-xs font-semibold transition flex items-center gap-2">
-                    <svg class="w-4 h-4 fill-current text-[#0a66c2]" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                    LinkedIn
-                </a>
-                <!-- E-mail -->
-                <a href="mailto:?subject=Portfólio%20Tech%20-%20Aryel%20Evelin&body=Olá!%20Conheça%20o%20portfólio%20Tech%20da%20Aryel%20Evelin:%20https://aryel-evelin.github.io/portfolio/tech/" class="px-4 py-2 bg-[#1c1917] hover:bg-[#292524] text-[#e7e5e4] border border-[#292524] rounded-lg text-xs font-semibold transition flex items-center gap-2">
-                    <svg class="w-4 h-4 fill-current text-white" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                    <span data-pt="E-mail" data-en="Email">E-mail</span>
-                </a>
-                <!-- Copiar Link -->
-                <button onclick="shareLink()" class="px-4 py-2 bg-[#1c1917] hover:bg-[#292524] text-[#e7e5e4] border border-[#292524] rounded-lg text-xs font-semibold transition flex items-center gap-2 cursor-pointer">
-                    🔗 <span data-pt="Copiar Link" data-en="Copy Link">Copiar Link</span>
-                </button>
-            </div>
-        </section>
-
     </main>
 
     <!-- FOOTER -->
