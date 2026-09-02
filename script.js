@@ -34,4 +34,26 @@ function toggleLanguage() {
     updateLanguage(newLang);
 }
 
+function shareHub() {
+    const isPt = currentLang === 'pt';
+    
+    const shareData = {
+        title: 'Aryel Evelin | T-Shaped Portfolio',
+        text: isPt 
+            ? 'A conexão definitiva entre Produto, Tecnologia e Marketing. Conheça o portfólio T-Shaped de Aryel Evelin.' 
+            : 'The ultimate connection between Product, Technology, and Marketing. Explore Aryel Evelin\'s T-Shaped portfolio.',
+        url: window.location.href
+    };
+
+    if (navigator.share) {
+        navigator.share(shareData).catch(() => {});
+    } else {
+        navigator.clipboard.writeText(shareData.url);
+        const alertMsg = isPt 
+            ? 'Link do Hub copiado para a área de transferência!' 
+            : 'Hub link copied to clipboard!';
+        alert(alertMsg);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => updateLanguage(currentLang));
