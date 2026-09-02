@@ -254,5 +254,27 @@
     </footer>
 
     <script src="./marketing.js"></script>
+
+                        function shareMarketing() {
+    const isPt = currentLang === 'pt';
+    
+    const shareData = {
+        title: 'Aryel Evelin | Marketing & Ads Portfolio',
+        text: isPt 
+            ? 'Confira o portfólio de Marketing, Growth, Ads e Storytelling de Aryel Evelin.' 
+            : 'Explore Aryel Evelin\'s Marketing, Growth, Ads, and Storytelling portfolio.',
+        url: window.location.href
+    };
+
+    if (navigator.share) {
+        navigator.share(shareData).catch(() => {});
+    } else {
+        navigator.clipboard.writeText(shareData.url);
+        const alertMsg = isPt 
+            ? 'Link do portfólio de Marketing copiado para a área de transferência!' 
+            : 'Marketing portfolio link copied to clipboard!';
+        alert(alertMsg);
+    }
+}
 </body>
 </html>
