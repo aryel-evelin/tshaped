@@ -13,7 +13,7 @@ function updateLanguage(lang) {
 
     const resumeLink = document.getElementById('resume-link');
 
-    // Força o apontamento exato para o currículo geral da raiz
+    // Aponta exclusivamente para o currículo geral da raiz (pt ou en)
     if (lang === 'pt') {
         if (resumeLink) resumeLink.href = 'curriculo_pt.pdf';
     } else {
