@@ -13,12 +13,14 @@ function updateLanguage(lang) {
 
     const resumeLink = document.getElementById('resume-link');
 
+    // Alterna o link do currículo de acordo com o idioma ativo
     if (lang === 'pt') {
-        if (resumeLink) resumeLink.href = '../curriculo_pt.pdf';
+        if (resumeLink) resumeLink.href = './curriculo_pt.pdf';
     } else {
-        if (resumeLink) resumeLink.href = '../curriculo_en.pdf';
+        if (resumeLink) resumeLink.href = './curriculo_en.pdf';
     }
 
+    // Traduz os textos com atributos data-pt e data-en
     document.querySelectorAll('[data-pt]').forEach(el => {
         const text = el.getAttribute(`data-${lang}`);
         if (text) {
@@ -32,14 +34,14 @@ function toggleLanguage() {
     updateLanguage(newLang);
 }
 
-function shareTech() {
+function shareHub() {
     const isPt = currentLang === 'pt';
     
     const shareData = {
-        title: 'Aryel Evelin | Tech & Product Portfolio',
+        title: 'Aryel Evelin | T-Shaped Portfolio',
         text: isPt 
-            ? 'Confira o portfólio Tech, Produto, Processos (BPMN) e IA de Aryel Evelin.' 
-            : 'Explore Aryel Evelin\'s Tech, Product Management, BPMN, and AI portfolio.',
+            ? 'A conexão definitiva entre Produto, Tecnologia e Marketing. Conheça o portfólio T-Shaped de Aryel Evelin.' 
+            : 'The ultimate connection between Product, Technology, and Marketing. Explore Aryel Evelin\'s T-Shaped portfolio.',
         url: window.location.href
     };
 
@@ -48,8 +50,8 @@ function shareTech() {
     } else {
         navigator.clipboard.writeText(shareData.url);
         const alertMsg = isPt 
-            ? 'Link do portfólio Tech copiado para a área de transferência!' 
-            : 'Tech portfolio link copied to clipboard!';
+            ? 'Link do Hub copiado para a área de transferência!' 
+            : 'Hub link copied to clipboard!';
         alert(alertMsg);
     }
 }
