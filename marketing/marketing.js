@@ -9,16 +9,33 @@ function updateLanguage(lang) {
     currentLang = lang;
     localStorage.setItem('pref_lang', lang);
     document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
-    document.getElementById('lang-text').textContent = lang === 'pt' ? 'EN' : 'PT';
 
-    const resumeLink = document.getElementById('resume-link');
+    const langText = document.getElementById('lang-text');
+    if (langText) langText.textContent = lang === 'pt' ? 'EN' : 'PT';
 
-   if (lang === 'pt') {
-    if (resumeLink) resumeLink.href = '/tshaped/curriculo_marketing_pt.pdf';
-} else {
-    if (resumeLink) resumeLink.href = '/tshaped/curriculo_marketing_en.pdf';
-}
+    // 1. Mapeamento dos arquivos PDF da trilha de Marketing por ID
+    const pdfLinks = {
+        'resume-link': `curriculo_marketing_${lang}.pdf`,
+        'copy-link': `portfolio_copy_${lang}.pdf`,
+        'photo-link': `portfolio_fotografia_${lang}.pdf`
+    };
 
+    Object.entries(pdfLinks).forEach(([id, fileName]) => {
+        const linkEl = document.getElementById(id);
+        if (linkEl) {
+            linkEl.href = `/tshaped/${fileName}`;
+        }
+    });
+
+    // 2. Atualização genérica de links via atributos no HTML (data-pt-href / data-en-href)
+    document.querySelectorAll('[data-pt-href]').forEach(el => {
+        const targetHref = el.getAttribute(`data-${lang}-href`);
+        if (targetHref) {
+            el.href = targetHref;
+        }
+    });
+
+    // 3. Tradução dos textos visíveis
     document.querySelectorAll('[data-pt]').forEach(el => {
         const text = el.getAttribute(`data-${lang}`);
         if (text) {
