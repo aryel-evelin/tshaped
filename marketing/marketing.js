@@ -1,246 +1,74 @@
-<!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
-<head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-59JXMEB053"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);} 
-      gtag('js', new Date());
+let currentLang = localStorage.getItem('pref_lang');
 
-      gtag('config', 'G-59JXMEB053');
-    </script>
+if (!currentLang) {
+    const browserLang = navigator.language || navigator.userLanguage;
+    currentLang = browserLang.toLowerCase().startsWith('pt') ? 'pt' : 'en';
+}
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aryel Evelin | Growth, Conteúdo Estratégico & Storytelling | Marketing & Ads</title>
-    
-    <!-- FAVICON -->
-    <link rel="icon" type="image/png" href="../favicon.png">
+function updateLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('pref_lang', lang);
+    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
 
-    <!-- OPEN GRAPH -->
-    <meta property="og:title" content="Aryel Evelin | Growth, Conteúdo Estratégico & Storytelling | Marketing & Ads">
-    <meta property="og:description" content="Especialista em unir visão estratégica de negócios, growth, tráfego pago, IA e storytelling de alto impacto.">
-    <meta property="og:image" content="../foto1.jpg">
-    <meta property="og:url" content="https://aryel-evelin.github.io/tshaped/marketing/">
-    <meta property="og:type" content="website">
+    const langText = document.getElementById('lang-text');
+    if (langText) langText.textContent = lang === 'pt' ? 'EN' : 'PT';
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        .fixed-marketing-bg {
-            position: absolute;
-            inset: 0;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+    // 1. Mapeamento dos arquivos PDF da trilha de Marketing por ID
+    const pdfLinks = {
+        'resume-link': `curriculo_marketing_${lang}.pdf`,
+        'copy-link': `portfolio_copy_${lang}.pdf`,
+        'photo-link': `portfolio_fotografia_${lang}.pdf`
+    };
+
+    Object.entries(pdfLinks).forEach(([id, fileName]) => {
+        const linkEl = document.getElementById(id);
+        if (linkEl) {
+            linkEl.href = `/tshaped/${fileName}`;
         }
-    </style>
-</head>
-<body class="bg-[#0f0e0d] text-[#e7e5e4] antialiased selection:bg-[#cc0000] selection:text-white">
+    });
 
-    <!-- MENU DE NAVEGAÇÃO -->
-    <nav class="sticky top-0 z-50 bg-[#0f0e0d]/90 backdrop-blur-md border-b border-[#292524]">
-        <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between sm:justify-center relative">
-            <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm font-medium">
-                <a href="../index.html" data-pt="← Voltar ao Hub" data-en="← Back to Hub" class="text-[#ff3333] hover:text-[#ff6666] font-semibold transition">← Voltar ao Hub</a>
-                <a href="#destaques" data-pt="Destaques" data-en="Highlights" class="text-[#a8a29e] hover:text-[#ff1a1a] transition">Destaques</a>
-                <a href="/tshaped/curriculo_marketing_pt.pdf" id="resume-link" target="_blank" data-pt="Currículo" data-en="Resume" data-pt-href="/tshaped/curriculo_marketing_pt.pdf" data-en-href="/tshaped/curriculo_marketing_en.pdf" class="text-[#a8a29e] hover:text-[#ff1a1a] transition">Currículo</a>
-                <a href="https://www.linkedin.com/in/aryel-evelin-a7507129/" target="_blank" class="text-[#a8a29e] hover:text-[#ff1a1a] transition">LinkedIn</a>
-                <a href="https://instagram.com/aryel_evelin" target="_blank" class="text-[#a8a29e] hover:text-[#ff1a1a] transition">Instagram</a>
-                <a href="https://wa.me/5564993055216" target="_blank" data-pt="WhatsApp" data-en="WhatsApp" class="text-[#a8a29e] hover:text-[#25d366] transition">
-                    WhatsApp
-                </a>
-            </div>
+    // 2. Atualização genérica de links via atributos no HTML (data-pt-href / data-en-href)
+    document.querySelectorAll('[data-pt-href]').forEach(el => {
+        const targetHref = el.getAttribute(`data-${lang}-href`);
+        if (targetHref) {
+            el.href = targetHref;
+        }
+    });
 
-            <!-- BOTÕES SUPERIORES (COMPARTILHAR & IDIOMA) -->
-            <div class="sm:absolute sm:right-6 flex items-center gap-2">
-                <button onclick="shareMarketing()" id="share-btn" title="Compartilhar Portfólio de Marketing" class="px-2.5 py-1 bg-[#1c1917] hover:bg-[#292524] border border-[#292524] text-xs font-b...">
-                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1...."></path></svg>
-                </button>
-                <button onclick="toggleLanguage()" id="lang-btn" class="px-3 py-1 bg-[#1c1917] hover:bg-[#292524] border border-[#292524] text-xs font-bold text-[#ff3333] rounded-md transition flex it...">
-                    🌐 <span id="lang-text">EN</span>
-                </button>
-            </div>
-        </div>
-    </nav>
+    // 3. Tradução dos textos visíveis
+    document.querySelectorAll('[data-pt]').forEach(el => {
+        const text = el.getAttribute(`data-${lang}`);
+        if (text) {
+            el.textContent = text;
+        }
+    });
+}
 
-    <!-- SEÇÃO 1: INÍCIO -->
-    <section id="inicio" class="relative w-full min-h-[90vh] flex flex-col justify-center items-center text-center py-24 px-6 overflow-hidden border-b border-[#292524]">
-        <div class="absolute inset-0 z-0">
-            <div class="fixed-marketing-bg" style="background-image: url('marketing-bg.jpg');"></div>
-            <div class="absolute inset-0 bg-[#0f0e0d]/75 backdrop-blur-[2px]"></div>
-        </div>
+function toggleLanguage() {
+    const newLang = currentLang === 'pt' ? 'en' : 'pt';
+    updateLanguage(newLang);
+}
 
-        <div class="relative z-10 max-w-4xl mx-auto space-y-6">
-            <span data-pt="Growth, Conteúdo Estratégico & Storytelling" data-en="Growth, Strategic Content & Storytelling" class="inline-block px-4 py-1.5 bg-[#e60000]/30 text-[#ff6666] text-xs font...">
-                Growth, Conteúdo Estratégico & Storytelling
-            </span>
-            <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-white drop-shadow-md">
-                Aryel Evelin
-            </h1>
-            <p data-pt="Especialista em unir visão estratégica de negócios, growth, tráfego pago, automações com IA e storytelling de alto impacto para marcas e projetos digitais." data-en="Spec...">
-                Especialista em unir visão estratégica de negócios, growth, tráfego pago, automações com IA e storytelling de alto impacto para marcas e projetos digitais.
-            </p>
-            <div class="pt-4 flex flex-wrap justify-center gap-4">
-                <a href="#destaques" data-pt="Ver Destaques" data-en="View Highlights" class="px-6 py-3 bg-[#cc0000] hover:bg-[#b30000] text-white font-semibold rounded-lg transition shadow-lg sha...">
-                    Ver Destaques
-                </a>
-                <a href="/tshaped/portfolio_copy_pt.pdf" id="copy-portfolio-link" target="_blank" data-pt="Portfólio Copy" data-en="Copy Portfolio" data-pt-href="/tshaped/portfolio_copy_pt.pdf" data-...>
-                    Portfólio Copy
-                </a>
-                <a href="/tshaped/portfolio_fotografia_pt.pdf" id="photo-portfolio-link" target="_blank" data-pt="Portfólio Fotografia" data-en="Photo Portfolio" data-pt-href="/tshaped/portfolio_foto...>
-                    Portfólio Fotografia
-                </a>
-            </div>
-        </div>
-    </section>
+function shareMarketing() {
+    const isPt = currentLang === 'pt';
+    
+    const shareData = {
+        title: 'Aryel Evelin | Marketing & Ads Portfolio',
+        text: isPt 
+            ? 'Confira o portfólio de Marketing, Growth, Ads e Storytelling de Aryel Evelin.' 
+            : 'Explore Aryel Evelin\'s Marketing, Growth, Ads, and Storytelling portfolio.',
+        url: window.location.href
+    };
 
-    <!-- CONTEÚDO PRINCIPAL (DESTAQUES) -->
-    <main class="max-w-4xl mx-auto px-6 space-y-24 py-16">
-        <section id="destaques" class="space-y-12 pt-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                
-                <!-- 1. Paid Media & Ads -->
-                <div class="bg-[#1c1917]/50 border border-[#292524] p-6 rounded-2xl flex flex-col justify-between space-y-4">
-                    <div class="space-y-3">
-                        <span data-pt="Paid Media & Tráfego" data-en="Paid Media & Traffic" class="text-[#ff3333] text-xs font-bold uppercase tracking-wider">Paid Media & Tráfego</span>
-                        <h3 data-pt="Estratégia de Ads & Funis de Conversão" data-en="Ads Strategy & Conversion Funnels" class="text-xl font-semibold text-white">Estratégia de Ads & Funis de Conver...</h3>
-                        <p data-pt="Estruturação de campanhas de tráfego pago, análise profunda de métricas de conversão e foco analítico em ROAS para otimização de funis complexos." data-en=...>
-                    </div>
-                </div>
+    if (navigator.share) {
+        navigator.share(shareData).catch(() => {});
+    } else {
+        navigator.clipboard.writeText(shareData.url);
+        const alertMsg = isPt 
+            ? 'Link do portfólio de Marketing copiado para a área de transferência!' 
+            : 'Marketing portfolio link copied to clipboard!';
+        alert(alertMsg);
+    }
+}
 
-                <!-- 2. AI-Driven Marketing & IA Ops -->
-                <div class="bg-[#1c1917]/50 border border-[#292524] p-6 rounded-2xl flex flex-col justify-between space-y-4">
-                    <div class="space-y-3">
-                        <span data-pt="IA Ops & Automação" data-en="AI Ops & Automation" class="text-[#ff3333] text-xs font-bold uppercase tracking-wider">IA Ops & Automação</span>
-                        <h3 data-pt="Marketing Impulsionado por IA" data-en="AI-Driven Marketing" class="text-xl font-semibold text-white">Marketing Impulsionado por IA</h3>
-                        <p data-pt="Casos práticos de uso de Inteligência Artificial na criação de conteúdo em escala, engenharia de prompts avançada, fluxos automatizados e operações de mídi...">
-                        <p data-pt="Análise e desenvolvimento de conteúdo estratégico, incluindo scripts em Python + IA para identificar os pontos fortes de cada nicho e reposicionamento no merca...>
-                    </div>
-                </div>
-
-                <!-- 3. Copywriting & VSL -->
-                <div class="bg-[#1c1917]/50 border border-[#292524] p-6 rounded-2xl flex flex-col justify-between space-y-4">
-                    <div class="space-y-3">
-                        <span data-pt="Copywriting & Conversão" data-en="Copywriting & Conversion" class="text-[#ff3333] text-xs font-bold uppercase tracking-wider">Copywriting & Conversão</span>
-                        <h3 data-pt="Roteiros (VSL) & Criativos" data-en="Scripts (VSL) & Creatives" class="text-xl font-semibold text-white">Roteiros (VSL) & Criativos</h3>
-                        <p data-pt="Criação de roteiros persuasivos para vídeos de vendas (Leads) e anúncios. Foco em ganchos de alta retenção, quebra de padrão e copy de resposta direta, unind...>
-                    </div>
-                    <div>
-                        <a href="/tshaped/portfolio_copy_pt.pdf" id="card-copy-link" target="_blank" data-pt="Acessar Portfólio de Copy →" data-en="Access Copy Portfolio →" data-pt-href="/tshaped/portfolio_copy_...>
-                            Acessar Portfólio de Copy →
-                        </a>
-                    </div>
-                </div>
-
-                <!-- 4. Substack -->
-                <div class="bg-[#1c1917]/50 border border-[#292524] p-6 rounded-2xl flex flex-col justify-between space-y-4">
-                    <div class="space-y-3">
-                        <span data-pt="Storytelling" data-en="Storytelling" class="text-[#ff3333] text-xs font-bold uppercase tracking-wider">Storytelling</span>
-                        <h3 data-pt="Substack: Crônicas e Narrativas" data-en="Substack: Essays & Narratives" class="text-xl font-semibold text-white">Substack: Crônicas e Narrativas</h3>
-                        <p data-pt="Escrita focada em profundidade e conexão emocional. Textos e crônicas que exploram o comportamento humano e vulnerabilidade, criando uma comunidade de leitores en...>
-                    </div>
-                    <div class="flex flex-wrap gap-3 pt-2">
-                        <a href="https://substack.com/@aryelevelin" target="_blank" data-pt="Crônicas Pessoais →" data-en="Personal Essays →" class="inline-flex items-center gap-2 text-xs font-se...>
-                            Crônicas Pessoais →
-                        </a>
-                        <a href="https://substack.com/@f1radioaberto" target="_blank" data-pt="Fórmula 1 Crônicas →" data-en="Formula 1 Essays →" class="inline-flex items-center gap-2 text-xs fo...>
-                            Fórmula 1 Crônicas →
-                        </a>
-                    </div>
-                </div>
-
-                <!-- 5. Reconhecimento -->
-                <div class="bg-[#1c1917]/50 border border-[#292524] p-6 rounded-2xl flex flex-col justify-between space-y-4">
-                    <div class="space-y-3">
-                        <span data-pt="Reconhecimento" data-en="Recognition" class="text-[#ff3333] text-xs font-bold uppercase tracking-wider">Reconhecimento</span>
-                        <h3 data-pt="Premiação 35Awards Rússia" data-en="35Awards Russia Recognition" class="text-xl font-semibold text-white">Premiação 35Awards Rússia</h3>
-                        <p data-pt="Classificações consecutivas entre os 100 Melhores Fotógrafos e 100 Melhores Fotos, além de Top 11% e Top 14% em concursos temáticos." data-en="Consecutive rank...>
-                    </div>
-                    <div>
-                        <a href="https://35awards.com/author/aryel/" target="_blank" data-pt="Ver Perfil Oficial no 35AWARDS →" data-en="View Official 35AWARDS Profile →" class="inline-flex items-...>
-                            Ver Perfil Oficial no 35AWARDS →
-                        </a>
-                    </div>
-                </div>
-
-                <!-- 6. Artes Visuais -->
-                <div class="bg-[#1c1917]/50 border border-[#292524] p-6 rounded-2xl flex flex-col justify-between space-y-4">
-                    <div class="space-y-3">
-                        <span data-pt="Artes Visuais" data-en="Visual Arts" class="text-[#ff3333] text-xs font-bold uppercase tracking-wider">Artes Visuais</span>
-                        <h3 data-pt="Exposição Individual" data-en="Solo Exhibition" class="text-xl font-semibold text-white">Exposição Individual</h3>
-                        <p data-pt="Exposição 'Lentes de um Poeta – Histórias de um Retrato' pelo projeto Claque Cultural em Morrinhos/GO (Outubro/2025)." data-en="Solo exhibition 'Lenses of a Po...>
-                    </div>
-                    <div>
-                        <a href="/tshaped/portfolio_fotografia_pt.pdf" id="card-photo-portfolio-link" target="_blank" data-pt="Ver Portfólio de Fotografia →" data-en="View Photo Portfolio →" data-...>
-                            Ver Portfólio de Fotografia →
-                        </a>
-                    </div>
-                </div>
-
-                <!-- 7. Mídia & Imprensa -->
-                <div class="bg-[#1c1917]/50 border border-[#292524] p-6 rounded-2xl flex flex-col justify-between space-y-4">
-                    <div class="space-y-3">
-                        <span data-pt="Mídia & Imprensa" data-en="Media & Press" class="text-[#ff3333] text-xs font-bold uppercase tracking-wider">Mídia & Imprensa</span>
-                        <h3 data-pt="Destaques na Mídia" data-en="Media Features" class="text-xl font-semibold text-white">Destaques na Mídia</h3>
-                        <ul class="space-y-2 text-[#a8a29e] text-sm list-disc list-inside">
-                            <li data-pt="G1 (Terra da Gente): Reportagem especial cobrindo as fotografias de aves em Morrinhos (GO) como processo de terapia e observação da natureza." data-en="G1 (G...>
-                            <li data-pt="Artells Magazine: Publicação fotográfica internacional em destaque na edição Nature & Travels (Vol 3107, 2025)."><strong>Artells Magazine:</strong> Publ...>
-                        </ul>
-                    </div>
-                    <div class="flex flex-wrap gap-4 pt-2">
-                        <a href="https://g1.globo.com/sp/campinas-regiao/terra-da-gente/vc-no-terra-da-gente/noticia/fotos-de-aves-viram-terapia-para-observadora-de-morrinhos-go.ghtml" target="_b...>
-                            Ler Matéria no G1 →
-                        </a>
-                        <a href="https://www.magcloud.com/browse/issue/3044045" target="_blank" data-pt="Ver Artells Magazine →" data-en="View Artells Magazine →" class="text-xs font-semi...>
-                            Ver Artells Magazine →
-                        </a>
-                    </div>
-                </div>
-
-                <!-- 8. Literatura -->
-                <div class="bg-[#1c1917]/50 border border-[#292524] p-6 rounded-2xl flex flex-col justify-between space-y-4">
-                    <div class="space-y-3">
-                        <span data-pt="Literatura" data-en="Literature" class="text-[#ff3333] text-xs font-bold uppercase tracking-wider">Literatura</span>
-                        <h3 data-pt="Bienal do Livro de São Paulo" data-en="São Paulo International Book Biennial" class="text-xl font-semibold text-white">Bienal do Livro de São Paulo</h3>
-                        <p data-pt="Autora selecionada pela curadoria 'Vozes Narrativas' para a Bienal do Livro de São Paulo, com obra convertida para gravação de estúdio em alta qualidade." data-en="Autho...>
-                    </div>
-                    <div>
-                        <a href="https://articule.art.br/wp-content/uploads/2026/02/PARTICIPANTES-VOZES-NARRATIVAS.docx-1-2.pdf" target="_blank" data-pt="Veja mais →" data-en="See more →" class="i...>
-                            Veja mais →
-                        </a>
-                    </div>
-                </div>
-
-                <!-- 9. Growth & Marketing -->
-                <div class="bg-[#1c1917]/50 border border-[#292524] p-6 rounded-2xl flex flex-col justify-between space-y-4 md:col-span-2">
-                    <div class="space-y-3">
-                        <span data-pt="Growth & Marketing" data-en="Growth & Marketing" class="text-[#ff3333] text-xs font-bold uppercase tracking-wider">Growth & Marketing</span>
-                        <h3 data-pt="Case ACSPro & Podcafé Tech" data-en="ACSPro Case & Podcafé Tech" class="text-xl font-semibold text-white">Case ACSPro & Podcafé Tech</h3>
-                        <p data-pt="Liderei a frente digital reestruturando mídias sociais, escalando o Instagram evoluindo de 300 para mais de 33.000 seguidores atualmente e idealizando o Podcafé T...>
-                    </div>
-                    <div class="flex flex-wrap items-center gap-4 pt-2">
-                        <a href="https://www.instagram.com/acsprobr/" target="_blank" data-pt="Visitar Instagram ACSPro →" data-en="Visit Instagram ACSPro →" class="inline-flex items-center ga...>
-                            Visitar Instagram ACSPro →
-                        </a>
-                        <a href="https://open.spotify.com/show/0FIW4vq59iKMFgEa0DhNfF" target="_blank" data-pt="🎧 Ouvir Podcafé Tech no Spotify" data-en="🎧 Listen to Podcafé Tech on Spotify" class=...>
-                            🎧 Ouvir Podcafé Tech no Spotify
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="max-w-4xl mx-auto px-6 py-12 mt-20 border-t border-[#292524] text-center text-xs text-[#78716c]">
-        <p data-pt="© 2026 Aryel Evelin. Todos os direitos reservados." data-en="© 2026 Aryel Evelin. All rights reserved.">© 2026 Aryel Evelin. Todos os direitos reservados.</p>
-    </footer>
-
-    <!-- SCRIPT JS -->
-    <script src="./marketing.js"></script>
-</body>
-</html>
+document.addEventListener('DOMContentLoaded', () => updateLanguage(currentLang));
