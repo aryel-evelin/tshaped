@@ -46,6 +46,7 @@
             <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm font-medium">
                 <a href="../index.html" data-pt="← Voltar ao Hub" data-en="← Back to Hub" class="text-[#ff3333] hover:text-[#ff6666] font-semibold transition">← Voltar ao Hub</a>
                 <a href="#destaques" data-pt="Destaques" data-en="Highlights" class="text-[#a8a29e] hover:text-[#ff1a1a] transition">Destaques</a>
+                <a href="#projetos" data-pt="Projetos" data-en="Projects" class="text-[#a8a29e] hover:text-[#ff1a1a] transition">Projetos</a>
                 <a href="../curriculo_tech_pt.pdf" id="resume-link" target="_blank" data-pt="Currículo" data-en="Resume" class="text-[#a8a29e] hover:text-[#ff1a1a] transition">Currículo</a>
                 <a href="https://www.linkedin.com/in/aryel-evelin-a7507129/" target="_blank" class="text-[#a8a29e] hover:text-[#ff1a1a] transition">LinkedIn</a>
                 <a href="https://wa.me/5564993055216" target="_blank" data-pt="WhatsApp" data-en="WhatsApp" class="text-[#a8a29e] hover:text-[#25d366] transition">
@@ -164,7 +165,93 @@
 
             </div>
         </section>
+
+        <!-- ============ PROJETOS ============ -->
+        <section id="projetos" class="space-y-8 pt-4">
+            <h2 class="text-2xl md:text-3xl font-bold text-white text-center" data-pt="Projetos" data-en="Projects">Projetos</h2>
+
+            <article class="bg-[#1c1917]/50 border border-[#292524] p-6 rounded-2xl space-y-4">
+                <div class="space-y-3">
+                    <span data-pt="Projeto autoral · Fiscal & IA" data-en="Original project · Fiscal & AI" class="text-[#ff3333] text-xs font-bold uppercase tracking-wider">Projeto autoral · Fiscal & IA</span>
+                    <h3 class="text-xl font-semibold text-white">NFSe Engine</h3>
+                    <p data-pt="Tradutor fiscal universal para NFS-e de vários municípios. Um servidor MCP (FastMCP, Python) que usa IA para converter layouts municipais diferentes em um modelo canônico único, com validação de campos e precisão decimal." data-en="Universal fiscal translator for NFS-e invoices from many municipalities. An MCP server (FastMCP, Python) that uses AI to convert different municipal layouts into a single canonical model, with field validation and decimal precision." class="text-[#a8a29e] text-sm leading-relaxed">Tradutor fiscal universal para NFS-e de vários municípios. Um servidor MCP (FastMCP, Python) que usa IA para converter layouts municipais diferentes em um modelo canônico único, com validação de campos e precisão decimal.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <button type="button" class="proj-shot " data-zoom="../projetos/nfse-arquitetura.webp" data-alt="NFSe Engine: arquitetura da solução">
+                        <img src="../projetos/nfse-arquitetura.webp" alt="NFSe Engine: arquitetura da solução" width="811" height="592" loading="lazy">
+                    </button>
+                    <button type="button" class="proj-shot " data-zoom="../projetos/nfse-playground.webp" data-alt="NFSe Engine: playground com layouts municipais">
+                        <img src="../projetos/nfse-playground.webp" alt="NFSe Engine: playground com layouts municipais" width="811" height="592" loading="lazy">
+                    </button>
+                </div>
+            </article>
+
+            <article class="bg-[#1c1917]/50 border border-[#292524] p-6 rounded-2xl space-y-4">
+                <div class="space-y-3">
+                    <span data-pt="Projeto KM · IA & Python" data-en="Project KM · AI & Python" class="text-[#ff3333] text-xs font-bold uppercase tracking-wider">Projeto KM · IA & Python</span>
+                    <h3 class="text-xl font-semibold text-white">KM Engine | Creative Growth AI</h3>
+                    <p data-pt="Central de controle que integra scripts em Python com a API do Gemini para analisar perfis de criadores, calibrar o tom de voz a partir de feeds RSS e gerar roteiros para Reels e VSL." data-en="Control center that integrates Python scripts with the Gemini API to analyze creator profiles, calibrate tone of voice from RSS feeds, and generate scripts for Reels and VSLs." class="text-[#a8a29e] text-sm leading-relaxed">Central de controle que integra scripts em Python com a API do Gemini para analisar perfis de criadores, calibrar o tom de voz a partir de feeds RSS e gerar roteiros para Reels e VSL.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <button type="button" class="proj-shot sm:col-span-2" data-zoom="../projetos/km-dashboard.webp" data-alt="KM Engine: central de controle">
+                        <img src="../projetos/km-dashboard.webp" alt="KM Engine: central de controle" width="811" height="592" loading="lazy">
+                    </button>
+                    <button type="button" class="proj-shot " data-zoom="../projetos/km-perfil.webp" data-alt="KM Engine: tom de voz e fontes RSS do perfil">
+                        <img src="../projetos/km-perfil.webp" alt="KM Engine: tom de voz e fontes RSS do perfil" width="811" height="592" loading="lazy">
+                    </button>
+                    <button type="button" class="proj-shot " data-zoom="../projetos/km-roteiro.webp" data-alt="KM Engine: roteiro gerado por etapas">
+                        <img src="../projetos/km-roteiro.webp" alt="KM Engine: roteiro gerado por etapas" width="811" height="592" loading="lazy">
+                    </button>
+                </div>
+            </article>
+
+            <article class="bg-[#1c1917]/50 border border-[#292524] p-6 rounded-2xl space-y-4">
+                <div class="space-y-3">
+                    <span data-pt="App · Saúde pet & Dados abertos" data-en="App · Pet health & Open data" class="text-[#ff3333] text-xs font-bold uppercase tracking-wider">App · Saúde pet & Dados abertos</span>
+                    <h3 class="text-xl font-semibold text-white">MyPet Story</h3>
+                    <p data-pt="App para tutores acompanharem a saúde e a rotina dos pets: remédios e doses, alarmes, vacinas, consultas e RG do Sinpatinhas (dados abertos no BigQuery e leitura por OCR), com chat de IA." data-en="App for pet owners to track the health and routine of their pets: medicines and doses, alarms, vaccines, appointments and the Sinpatinhas pet ID (open data on BigQuery and OCR reading), with an AI chat." class="text-[#a8a29e] text-sm leading-relaxed">App para tutores acompanharem a saúde e a rotina dos pets: remédios e doses, alarmes, vacinas, consultas e RG do Sinpatinhas (dados abertos no BigQuery e leitura por OCR), com chat de IA.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <button type="button" class="proj-shot sm:col-span-2" data-zoom="../projetos/mypet-inicio-pc.webp" data-alt="MyPet Story: painel geral">
+                        <img src="../projetos/mypet-inicio-pc.webp" alt="MyPet Story: painel geral" width="1000" height="873" loading="lazy">
+                    </button>
+                    <button type="button" class="proj-shot " data-zoom="../projetos/mypet-remedios.webp" data-alt="MyPet Story: gestão de remédios e doses">
+                        <img src="../projetos/mypet-remedios.webp" alt="MyPet Story: gestão de remédios e doses" width="1000" height="931" loading="lazy">
+                    </button>
+                    <button type="button" class="proj-shot " data-zoom="../projetos/mypet-ponte.webp" data-alt="MyPet Story: RG animal e consulta ao Sinpatinhas">
+                        <img src="../projetos/mypet-ponte.webp" alt="MyPet Story: RG animal e consulta ao Sinpatinhas" width="1000" height="1027" loading="lazy">
+                    </button>
+                </div>
+            </article>
+        </section>
+        <!-- ============ FIM PROJETOS ============ -->
     </main>
+
+    <!-- ============ ZOOM DAS IMAGENS ============ -->
+    <style>
+        .proj-shot { display:block; width:100%; border-radius:0.75rem; overflow:hidden; border:1px solid #292524; background:#0f0e0d; cursor:zoom-in; transition:border-color .25s ease; }
+        .proj-shot:hover { border-color:#ff1a1a; }
+        .proj-shot:focus-visible { outline:2px solid #ff3333; outline-offset:3px; }
+        .proj-shot img { display:block; width:100%; height:auto; aspect-ratio:811/592; object-fit:cover; object-position:top; }
+        #lightbox { padding:0; border:0; background:transparent; max-width:min(96vw,1100px); width:100%; }
+        #lightbox::backdrop { background:rgba(15,14,13,.92); backdrop-filter:blur(3px); }
+        #lightbox img { display:block; width:auto; max-width:100%; height:auto; max-height:90vh; margin:0 auto; border-radius:0.75rem; border:1px solid #292524; }
+    </style>
+    <dialog id="lightbox" aria-label="Imagem ampliada"><img id="lightbox-img" src="" alt=""></dialog>
+    <script>
+        (function () {
+            var box = document.getElementById('lightbox');
+            var big = document.getElementById('lightbox-img');
+            document.querySelectorAll('[data-zoom]').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    big.src = btn.getAttribute('data-zoom');
+                    big.alt = btn.getAttribute('data-alt') || '';
+                    box.showModal();
+                });
+            });
+            box.addEventListener('click', function () { box.close(); });
+        })();
+    </script>
 
     <!-- FOOTER -->
     <footer class="max-w-4xl mx-auto px-6 py-12 mt-20 border-t border-[#292524] text-center text-xs text-[#78716c]">
