@@ -46,6 +46,7 @@
             <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm font-medium">
                 <a href="../index.html" data-pt="← Voltar ao Hub" data-en="← Back to Hub" class="text-[#ff3333] hover:text-[#ff6666] font-semibold transition">← Voltar ao Hub</a>
                 <a href="#destaques" data-pt="Destaques" data-en="Highlights" class="text-[#a8a29e] hover:text-[#ff1a1a] transition">Destaques</a>
+                <a href="#projetos" data-pt="Projetos" data-en="Projects" class="text-[#a8a29e] hover:text-[#ff1a1a] transition">Projetos</a>
                 <a href="/tshaped/curriculo_marketing_pt.pdf" id="resume-link" target="_blank" data-pt="Currículo" data-en="Resume" data-pt-href="/tshaped/curriculo_marketing_pt.pdf" data-en-href="/tshaped/curriculo_marketing_en.pdf" class="text-[#a8a29e] hover:text-[#ff1a1a] transition">Currículo</a>
                 <a href="https://www.linkedin.com/in/aryel-evelin-a7507129/" target="_blank" class="text-[#a8a29e] hover:text-[#ff1a1a] transition">LinkedIn</a>
                 <a href="https://instagram.com/aryel_evelin" target="_blank" class="text-[#a8a29e] hover:text-[#ff1a1a] transition">Instagram</a>
@@ -233,7 +234,58 @@
 
             </div>
         </section>
+
+        <!-- ============ PROJETOS ============ -->
+        <section id="projetos" class="space-y-8 pt-4">
+            <h2 class="text-2xl md:text-3xl font-bold text-white text-center" data-pt="Projetos" data-en="Projects">Projetos</h2>
+
+            <article class="bg-[#1c1917]/50 border border-[#292524] p-6 rounded-2xl space-y-4">
+                <div class="space-y-3">
+                    <span data-pt="Projeto KM · Autoral" data-en="Project KM · Original" class="text-[#ff3333] text-xs font-bold uppercase tracking-wider">Projeto KM · Autoral</span>
+                    <h3 class="text-xl font-semibold text-white">KM Engine | Creative Growth AI</h3>
+                    <p data-pt="Ferramenta própria que analisa o perfil e o tom de voz de criadores, monitora feeds RSS do nicho e gera roteiros de alta retenção para Reels e VSL, unindo análise comportamental, copy e IA." data-en="Original tool that analyzes the profile and tone of voice of creators, monitors niche RSS feeds, and generates high-retention scripts for Reels and VSLs, combining behavioral analysis, copy, and AI." class="text-[#a8a29e] text-sm leading-relaxed">Ferramenta própria que analisa o perfil e o tom de voz de criadores, monitora feeds RSS do nicho e gera roteiros de alta retenção para Reels e VSL, unindo análise comportamental, copy e IA.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <button type="button" class="proj-shot sm:col-span-2" data-zoom="../projetos/km-dashboard.webp" data-alt="KM Engine: central de controle">
+                        <img src="../projetos/km-dashboard.webp" alt="KM Engine: central de controle" width="811" height="592" loading="lazy">
+                    </button>
+                    <button type="button" class="proj-shot " data-zoom="../projetos/km-perfil.webp" data-alt="KM Engine: tom de voz e fontes RSS do perfil">
+                        <img src="../projetos/km-perfil.webp" alt="KM Engine: tom de voz e fontes RSS do perfil" width="811" height="592" loading="lazy">
+                    </button>
+                    <button type="button" class="proj-shot " data-zoom="../projetos/km-roteiro.webp" data-alt="KM Engine: roteiro gerado por etapas">
+                        <img src="../projetos/km-roteiro.webp" alt="KM Engine: roteiro gerado por etapas" width="811" height="592" loading="lazy">
+                    </button>
+                </div>
+            </article>
+        </section>
+        <!-- ============ FIM PROJETOS ============ -->
     </main>
+
+    <!-- ============ ZOOM DAS IMAGENS ============ -->
+    <style>
+        .proj-shot { display:block; width:100%; border-radius:0.75rem; overflow:hidden; border:1px solid #292524; background:#0f0e0d; cursor:zoom-in; transition:border-color .25s ease; }
+        .proj-shot:hover { border-color:#ff1a1a; }
+        .proj-shot:focus-visible { outline:2px solid #ff3333; outline-offset:3px; }
+        .proj-shot img { display:block; width:100%; height:auto; aspect-ratio:811/592; object-fit:cover; object-position:top; }
+        #lightbox { padding:0; border:0; background:transparent; max-width:min(96vw,1100px); width:100%; }
+        #lightbox::backdrop { background:rgba(15,14,13,.92); backdrop-filter:blur(3px); }
+        #lightbox img { display:block; width:auto; max-width:100%; height:auto; max-height:90vh; margin:0 auto; border-radius:0.75rem; border:1px solid #292524; }
+    </style>
+    <dialog id="lightbox" aria-label="Imagem ampliada"><img id="lightbox-img" src="" alt=""></dialog>
+    <script>
+        (function () {
+            var box = document.getElementById('lightbox');
+            var big = document.getElementById('lightbox-img');
+            document.querySelectorAll('[data-zoom]').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    big.src = btn.getAttribute('data-zoom');
+                    big.alt = btn.getAttribute('data-alt') || '';
+                    box.showModal();
+                });
+            });
+            box.addEventListener('click', function () { box.close(); });
+        })();
+    </script>
 
     <!-- FOOTER -->
     <footer class="max-w-4xl mx-auto px-6 py-12 mt-20 border-t border-[#292524] text-center text-xs text-[#78716c]">
